@@ -2,11 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const MoviesDB = require('./Modules/moviesDB.js');
 
-require('dotenv').config('moviesAPI-VladoTomovic.env');
+require('dotenv').config('.env');
 
-const db = new MoviesDB(
-  `mongodb+srv://Sporesurf:12341234@assignment1.22ijlze.mongodb.net/sample_mflix?retryWrites=true&w=majority`
-);
+const db = new MoviesDB();
 const app = express();
 
 app.use(cors());
