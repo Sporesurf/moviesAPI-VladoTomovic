@@ -1,11 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const MoviesDB = require('./Modules/moviesDB.js');
 
-const app = express();
-const cors = require('cors');
-const db = new MoviesDB();
-
 require('dotenv').config('moviesAPI-VladoTomovic.env');
+
+const db = new MoviesDB();
+const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -108,4 +109,5 @@ db.initialize(process.env.MONGODB_CONN_STRING)
   .catch((err) => {
     console.log(err);
   });
+
 //pw 12341234
