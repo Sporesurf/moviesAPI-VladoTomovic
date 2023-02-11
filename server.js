@@ -1,8 +1,8 @@
-const express = require('express');
-const cors = require('cors');
 const MoviesDB = require('./Modules/moviesDB.js');
-const db = new MoviesDB();
+const express = require('express');
 const app = express();
+const cors = require('cors');
+const db = new MoviesDB();
 
 require('dotenv').config('moviesAPI-VladoTomovic.env');
 
