@@ -1,5 +1,6 @@
-const MoviesDB = require('./Modules/moviesDB.js');
 const express = require('express');
+const MoviesDB = require('./Modules/moviesDB.js');
+
 const app = express();
 const cors = require('cors');
 const db = new MoviesDB();
