@@ -6,22 +6,10 @@ const cors = require('cors');
 const db = new MoviesDB();
 
 require('dotenv').config('moviesAPI-VladoTomovic.env');
-
 app.use(cors());
 app.use(express.json());
 
 const HTTP_PORT = process.env.PORT || 3000;
-
-//...............................Initialize the Server...............................
-db.initialize(process.env.MONGODB_CONN_STRING)
-  .then(() => {
-    app.listen(HTTP_PORT, () => {
-      console.log(`server listening on: ${HTTP_PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 // ....................................API Routes....................................
 app.get('/', (req, res) => {
@@ -110,4 +98,14 @@ app.delete('/api/movies/:_id', (req, res) => {
     });
 });
 
+//...............................Initialize the Server...............................
+db.initialize(process.env.MONGODB_CONN_STRING)
+  .then(() => {
+    app.listen(HTTP_PORT, () => {
+      console.log(`server listening on: ${HTTP_PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 //pw 12341234
