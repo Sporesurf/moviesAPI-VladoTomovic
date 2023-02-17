@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const MoviesDB = require('./Modules/moviesDB.js');
 
-require('dotenv').config('.env');
+require('dotenv').config('moviesAPI-VladoTomovic.env');
 
 const db = new MoviesDB();
 const app = express();
@@ -39,18 +39,14 @@ app.post('/api/movies', (req, res) => {
 // this case, it will show both “The Avengers” films).
 
 app.get('/api/movies', (req, res) => {
-  if (!req.query.page || !req.query.perPage)
-    res.status(500).json({ message: 'Missing query parameters' });
-  else {
-    db.getAllMovies(req.query.page, req.query.perPage, req.query.title)
-      .then((movies) => {
-        res.status(200).json(movies);
-      })
-      .catch((err) => {
-        res.status(400).json(err);
-        console.log('Bad Request');
-      });
-  } // Pagination page 1 not working
+  db.getAllMovies(req.query.page, req.query.perPage, req.query.title)
+    .then((movies) => {
+      res.status(200).json(movies);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+      console.log('Bad Request');
+    }); // Pagination page 1 not working
 });
 
 //  GET /api/movies
